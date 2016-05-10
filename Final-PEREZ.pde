@@ -24,6 +24,9 @@ float surface;
 float sky;
 
 float average;
+float totalPeople;
+float totalPerez;
+
 
 float xSun = 100, ySun = 150, sunSize = 40;
 float xMoon = 100, yMoon = 150, moonSize = 40;
@@ -32,7 +35,7 @@ float cloudX = 100, cloudY = 100;
 float cloudMovement = 1;
 float amountCloud=9;
 
-float pct25 = 1.25;
+float pct = 1.25;
 
 int last;
 
@@ -251,8 +254,6 @@ class Person {
     text("$", x-30, y+90);           // $ sign
     text(salary, x-20, y+90);        // salary
     }
-    //fill(0);
-    //text( name, 2+x-w/2, y-h/2 );  Name on the guy: not necessary...
   }
   void head(float x, float headY, float hh) {
     // Head
@@ -270,10 +271,13 @@ class Person {
     ellipse(x-6, headY-6, 4, 4);
     ellipse(x+6, headY-6, 4, 4);
   }
+  
+  // Raise Method
   void raise(float pct) {
     // Increase salary by pct
-    salary = salary*pct25;
+    salary = salary*pct;
   }
+  // Bonus Method
   void bonus(float amt) {
     // Increase salary by amount
    salary = salary + 1000;
@@ -291,8 +295,10 @@ void message() {
   text(author, 20, 30);
   text("Average salary: " + average, width/2, 80 - space);
   
-  average = people[0].salary + people[1].salary + people[2].salary + people[3].salary + people[4].salary 
-  + people[5].salary + people[6].salary + people[7].salary + people[8].salary / 9;
+  average = (totalPeople + totalPerez) /2;
+  totalPeople = (people[0].salary + people[1].salary + people[2].salary+ people[3].salary + people[4].salary + people[5].salary + people[6].salary + people[7].salary + people[8].salary) / 9;
+  totalPerez =  (perez[0].salary + perez[1].salary + perez[2].salary+ perez[3].salary + perez[4].salary + perez[5].salary + perez[6].salary + perez[7].salary + perez[8].salary) / 9;
+
 
   text(instruction, width/20, 80 - space);
   text(instruction1, width/20, 80);
